@@ -13,7 +13,7 @@ cred = credentials.Certificate(cred_dict)
 firebase_admin.initialize_app(cred, {'databaseURL': os.getenv('DATABASE_URL')})
 
 
-ref = db.reference('Students/')
+ref = db.reference('AdminLocation/')
 
 data = {
     

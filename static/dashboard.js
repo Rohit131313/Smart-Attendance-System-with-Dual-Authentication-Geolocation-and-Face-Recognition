@@ -80,37 +80,6 @@ async function loadStudentData(scholarNumber) {
     }
 }
 
-// Function to fetch semester start date
-async function fetchSemesterStartDate() {
-    try {
-        const snapshot = await get(ref(database, "AdminLocation/"));
-        if (snapshot.exists() && snapshot.val().startDate) {
-            return snapshot.val().startDate;
-        } else {
-            console.warn("⚠️ No semester start date found. Using default.");
-            return "2025-03-01"; // Default fallback date
-        }
-    } catch (error) {
-        console.error("❌ Error fetching semester start date:", error);
-        return "2025-03-01"; // Default fallback date in case of an error
-    }
-}
-
-// Function to count weekdays between two dates
-function getWeekdaysCount(startDate, endDate = new Date()) {
-    let start = new Date(startDate);
-    let end = new Date(endDate);
-    let count = 0;
-
-    while (start <= end) {
-        let day = start.getDay(); // Monday to Friday (1-5)
-        if (day >= 1 && day <= 5) count++;
-        start.setDate(start.getDate() + 1);
-    }
-    return count;
-}
-
-
 
 // Logout function
 document.getElementById("logoutBtn").addEventListener("click", () => {

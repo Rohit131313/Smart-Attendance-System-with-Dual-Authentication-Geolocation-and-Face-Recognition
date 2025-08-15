@@ -24,7 +24,9 @@
         <label for="datePicker">Select Date:</label>
         <input type="date" id="datePicker">
         <button class="primary" onclick="loadAttendance()">Load Attendance</button>
-
+        <div class="card">
+            <button class="secondary" onclick="markHolidayForAll()">Mark Holiday</button>
+        </div>
     </div>
     <div class="card">
         <label for="studentSelect">Student ID:</label>
@@ -46,9 +48,7 @@
     
         <button class="export" onclick="exportExcelWithDateRange()">Export Date Range Excel File</button>
     </div>
-    <div class="card">
-        <button class="secondary" onclick="markHolidayForAll()">Mark Holiday</button>
-    </div>
+    
         <button class="logout" id="logoutBtn" onclick="window.location.href='/adminLogin'">Logout</button>
     </div>
 
