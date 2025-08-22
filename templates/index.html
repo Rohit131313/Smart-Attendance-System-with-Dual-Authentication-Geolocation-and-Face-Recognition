@@ -220,7 +220,12 @@
                 
                 const BASE_URL = "http://localhost:5000"
                 // const BASE_URL = "https://c0a7-2409-40c4-4-35bc-99d5-3443-fb5d-1cf6.ngrok-free.app"
-                const response = await fetch(`${BASE_URL}/process`, { //'http://localhost:5000/process'
+                // const response = await fetch(`${BASE_URL}/process`, { //'http://localhost:5000/process'
+                //     method: 'POST',
+                //     body: formData,
+                //     headers: { 'Accept': 'application/json' }
+                // });
+                const response = await fetch("/process", { //'http://localhost:5000/process'
                     method: 'POST',
                     body: formData,
                     headers: { 'Accept': 'application/json' }

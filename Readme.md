@@ -112,6 +112,68 @@ FIREBASE_SERVICE_ACCOUNT_KEY_JSON=copy and paste the content of path_to_your_ser
 
 * `DATABASE_URL` is your **Firebase Realtime Database URL** (like `https://your-project-id.firebaseio.com/`).
 
+#### 5.3. Set Up `firebase-config.js` (Frontend Firebase Setup)
+
+1. **Create your own Firebase Web App**  
+   - Go to Firebase Console → **Project Settings** → **General**  
+   - Scroll to **Your Apps** → click **</> Add app** → Register a Web App  
+   - Copy the Firebase config snippet.
+
+2. **Create a file named `firebase-config.js` inside `/static` folder**  
+   ```js
+   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+   import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+   import { getDatabase } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
+   // Replace with your own Firebase config
+   const firebaseConfig = {
+     apiKey: "YOUR_API_KEY",
+     authDomain: "YOUR_AUTH_DOMAIN",
+     databaseURL: "YOUR_DATABASE_URL",
+     projectId: "YOUR_PROJECT_ID",
+     storageBucket: "YOUR_STORAGE_BUCKET",
+     messagingSenderId: "YOUR_SENDER_ID",
+     appId: "YOUR_APP_ID",
+     measurementId: "YOUR_MEASUREMENT_ID"
+   };
+
+   const app = initializeApp(firebaseConfig);
+   const auth = getAuth(app);
+   const database = getDatabase(app);
+
+   export { auth, database };
+
+
+### 5.4 Create `imagekit-config.js`
+
+To handle student image uploads with **ImageKit**, each user must create their own configuration file.
+
+1. **Go to the ImageKit Dashboard**: [https://imagekit.io/dashboard](https://imagekit.io/dashboard)
+
+2. **Obtain your credentials**:
+
+   * **Public Key** – for client-side uploads
+   * **Private Key** – for server-side uploads
+   * **Folder** – the folder in ImageKit where student images will be stored
+   * **Base URL** – the URL prefix for uploaded images
+
+3. **Create a file** named `imagekit-config.js` inside your `static/` folder.
+
+4. **Add the following template code**, replacing the placeholders with your own credentials:
+
+```javascript
+const imagekitUrl = "https://upload.imagekit.io/api/v1/files/upload";
+const imagekitPublicKey = "your_public_key_here";
+const imagekitPrivateKey = "your_private_key_here";
+const imagekitFolder = "/students"; // Folder in ImageKit
+const imagekitBaseUrl = "https://ik.imagekit.io/your_imagekit_id/students/";
+
+export { imagekitUrl, imagekitPublicKey, imagekitPrivateKey, imagekitFolder, imagekitBaseUrl };
+```
+---
+
+If you want, I can now **merge this seamlessly into your full README** at the proper place, so users have **Firebase + ImageKit setup** instructions all in one flow. Do you want me to do that?
+
 ---
 
 ### 6. Set Up Your Database and Storage
@@ -217,10 +279,6 @@ ngrok http 5000
 
 * Copy the generated **ngrok URL** (e.g., `https://randomid.ngrok-free.app`).
 
-* Update `BASE_URL` inside these files:
-
-  * `templates/index.html`
-  * `static/adminDashboard.js`
 
 * Now open the **ngrok URL** on your mobile browser.
 

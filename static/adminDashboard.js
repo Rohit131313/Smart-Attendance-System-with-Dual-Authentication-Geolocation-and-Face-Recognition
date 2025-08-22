@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000";
+// const BASE_URL = "http://localhost:5000";
 // const BASE_URL = "https://c0a7-2409-40c4-4-35bc-99d5-3443-fb5d-1cf6.ngrok-free.app";
 let currentStudentId = null;
 let selectedDate = null;
@@ -9,7 +9,14 @@ async function loadAttendance() {
     const branch = document.getElementById("branch").value;
     selectedDate = document.getElementById("datePicker").value;
 
-    const res = await fetch(`${BASE_URL}/get-attendance`, {
+    // const res = await fetch(`${BASE_URL}/get-attendance`, {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify({ batch,branch,selectedDate })
+    //     });
+    const res = await fetch("/get-attendance", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

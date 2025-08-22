@@ -119,10 +119,10 @@ def process_image():
     distance = geodesic(GEOFENCE_CENTER, user_location).meters
 
     print(f"Distance (geodesic): {distance} meters")
-    if distance > GEOFENCE_RADIUS:
-        return jsonify({"error": "User is outside the geofenced area."}), 400
-    else:
-        print("User is in range")
+    # if distance > GEOFENCE_RADIUS:
+    #     return jsonify({"error": "User is outside the geofenced area."}), 400
+    # else:
+    #     print("User is in range")
 
     # Load face encodings
     print("Loading Encode File ...")
